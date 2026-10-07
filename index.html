@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Producción Musical — Juan Perdomo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --black:#0E0E10;
+  --ink:#1A1A1D;
+  --muted:#6F7075;
+  --line:#E7E7E4;
+  --surface:#FAFAF9;
+  --blue:#2B4EFF;
+  --white:#FFFFFF;
+  --max:1120px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--surface);
+  color:var(--ink);
+  font-family:"Inter",Arial,sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.page{
+  width:min(var(--max),calc(100% - 64px));
+  margin:0 auto;
+  padding:64px 0 96px;
+}
+h1,h2{
+  font-family:"Fraunces",Georgia,serif;
+  font-weight:500;
+  letter-spacing:-.025em;
+  color:var(--black);
+}
+h1{
+  font-size:clamp(54px,8vw,94px);
+  line-height:.96;
+  max-width:900px;
+  margin:0 0 28px;
+}
+h2{
+  font-size:clamp(34px,4vw,52px);
+  line-height:1.04;
+  margin:0 0 22px;
+}
+h3{
+  color:var(--black);
+  font-size:16px;
+  line-height:1.3;
+  margin:0 0 9px;
+}
+p{max-width:760px;margin:0 0 18px}
+.eyebrow{
+  font-size:11px;
+  line-height:1.3;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.lead{
+  font-size:19px;
+  line-height:1.55;
+  color:#45464B;
+  max-width:730px;
+}
+.cover{
+  min-height:780px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  padding-bottom:54px;
+}
+.cover-top{
+  display:flex;
+  justify-content:space-between;
+  gap:32px;
+  color:var(--muted);
+  font-size:12px;
+}
+.cover-mark{
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--black);
+}
+.cover-bottom{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:40px;
+  align-items:end;
+}
+.cover-meta{
+  font-size:13px;
+  color:var(--muted);
+  text-align:right;
+}
+.section{
+  padding:104px 0;
+  border-bottom:1px solid var(--line);
+}
+.section-intro{
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  gap:72px;
+  align-items:start;
+}
+.section-number{
+  font-size:12px;
+  font-weight:700;
+  color:var(--blue);
+  margin-bottom:18px;
+  letter-spacing:.08em;
+}
+.section-intro > p{
+  margin:3px 0 0;
+  color:#4B4C50;
+}
+.process{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:0;
+  margin-top:56px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.process-step{
+  padding:22px 14px 24px 0;
+  border-right:1px solid var(--line);
+}
+.process-step:last-child{border-right:0}
+.process-step .num{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:9px;
+}
+.process-step strong{
+  display:block;
+  font-size:13px;
+  color:var(--black);
+}
+.offer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:56px;
+}
+.offer{
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  min-height:650px;
+}
+.offer.featured{
+  border-color:var(--black);
+}
+.offer-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:var(--blue);
+  margin-bottom:12px;
+}
+.offer h3{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:34px;
+  font-weight:500;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.offer p{color:#505156}
+.offer ul,.plain-list{
+  margin:18px 0 0;
+  padding:0;
+  list-style:none;
+}
+.offer li,.plain-list li{
+  padding:8px 0;
+  border-top:1px solid var(--line);
+  font-size:14px;
+}
+.offer li:last-child,.plain-list li:last-child{border-bottom:1px solid var(--line)}
+.offer-price{
+  margin-top:auto;
+  padding-top:40px;
+}
+.price-label{
+  color:var(--muted);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-weight:700;
+  margin-bottom:7px;
+}
+.price{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:42px;
+  line-height:1;
+  color:var(--black);
+}
+.price-usd{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13px;
+}
+.callout{
+  margin-top:32px;
+  padding:28px 30px;
+  background:#F0F2FF;
+  border-left:3px solid var(--blue);
+}
+.callout strong{color:var(--black)}
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:72px;
+}
+.checklist{
+  margin:26px 0 0;
+  padding:0;
+  list-style:none;
+}
+.checklist li{
+  padding:11px 0;
+  border-top:1px solid var(--line);
+}
+.checklist li:before{
+  content:"✓";
+  color:var(--blue);
+  font-weight:700;
+  margin-right:12px;
+}
+.comparison{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:48px;
+  font-size:14px;
+}
+.comparison th,.comparison td{
+  padding:15px 12px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+.comparison th{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+.comparison td:not(:first-child){
+  text-align:center;
+  font-weight:600;
+}
+.tick{color:var(--blue);font-size:18px}
+.dash{color:#B5B5B5}
+.payment-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:48px;
+}
+.payment-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:30px;
+}
+.payment-card h3{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:26px;
+  font-weight:500;
+}
+.payment-row{
+  display:grid;
+  grid-template-columns:54px 1fr auto;
+  gap:16px;
+  padding:17px 0;
+  border-top:1px solid var(--line);
+  align-items:center;
+}
+.payment-row .step{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+}
+.payment-row .label{
+  font-size:13px;
+  color:var(--muted);
+}
+.payment-row .amount{
+  font-weight:700;
+  color:var(--black);
+}
+.methods{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:36px;
+}
+.method{
+  border-top:1px solid var(--black);
+  padding-top:14px;
+}
+.method strong{
+  display:block;
+  margin-bottom:5px;
+  font-size:14px;
+}
+.method span{
+  color:var(--muted);
+  font-size:12px;
+}
+.note{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+.footer{
+  padding:72px 0 0;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:40px;
+}
+.footer h2{max-width:650px}
+.footer-meta{
+  text-align:right;
+  color:var(--muted);
+  font-size:12px;
+}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  .page{width:100%;padding:0}
+  .cover{min-height:255mm;page-break-after:always}
+  .section{padding:22mm 0;break-inside:avoid}
+  .offer-grid,.two-col,.payment-grid{break-inside:avoid}
+  .offer{min-height:auto}
+  .process{font-size:9pt}
+  .methods{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:800px){
+  .page{width:min(100% - 36px,680px)}
+  .section-intro,.two-col,.offer-grid,.payment-grid{grid-template-columns:1fr;gap:32px}
+  .process{grid-template-columns:1fr 1fr}
+  .process-step:nth-child(2n){border-right:0}
+  .methods{grid-template-columns:1fr 1fr}
+  .cover{min-height:680px}
+  .cover-bottom{grid-template-columns:1fr}
+  .cover-meta{text-align:left}
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <!-- PORTADA -->
+  <section class="cover">
+    <div class="cover-top">
+      <div class="cover-mark">Propuesta de producción musical</div>
+      <div>2026</div>
+    </div>
+
+    <div>
+      <div class="eyebrow">Proyecto musical · Salsa</div>
+      <h1>Una canción.<br>Dos caminos<br>de producción.</h1>
+      <p class="lead">
+        Una propuesta para desarrollar una producción de salsa completa,
+        desde la maqueta hasta el master final, con dos alternativas según
+        el punto de partida creativo de la canción.
+      </p>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        <div class="eyebrow">Cliente</div>
+        <strong>Juan Perdomo</strong>
+      </div>
+      <div class="cover-meta">
+        Producción musical<br>
+        Salsa · 2026<br><br>
+        <strong style="color:var(--black);">Emisión</strong> · 7 de octubre de 2026<br>
+        <strong style="color:var(--black);">Vigencia</strong> · 2 meses · hasta el 7 de diciembre de 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">01</div>
+        <h2>El proyecto</h2>
+      </div>
+      <div>
+        <p>
+          El objetivo es desarrollar una producción de salsa completa,
+          cuidando tanto la interpretación como el arreglo, la instrumentación
+          y el resultado sonoro final.
+        </p>
+        <p>
+          El proceso contempla desde la construcción de la maqueta hasta la
+          entrega del master final, integrando producción musical, músicos
+          intérpretes y las etapas técnicas necesarias para llevar la canción
+          a una versión terminada.
+        </p>
+        <p>
+          La producción busca que cada elemento cumpla una función dentro de
+          la canción: ritmo, armonía, instrumentación, dinámica e identidad sonora.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">02</div>
+        <h2>Un mismo estándar de producción</h2>
+      </div>
+      <p>
+        Las dos alternativas comparten el mismo estándar técnico y el mismo
+        recorrido general. La diferencia no está en la calidad de la producción,
+        sino en el nivel de desarrollo creativo que requiere la canción.
+      </p>
+    </div>
+
+    <div class="process">
+      <div class="process-step"><div class="num">01</div><strong>Maqueta</strong></div>
+      <div class="process-step"><div class="num">02</div><strong>Preproducción</strong></div>
+      <div class="process-step"><div class="num">03</div><strong>Producción</strong></div>
+      <div class="process-step"><div class="num">04</div><strong>Grabación</strong></div>
+      <div class="process-step"><div class="num">05</div><strong>Edición</strong></div>
+      <div class="process-step"><div class="num">06</div><strong>Mezcla</strong></div>
+      <div class="process-step"><div class="num">07</div><strong>Master</strong></div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">03</div>
+        <h2>Dos perfiles. Una misma producción.</h2>
+      </div>
+      <p>
+        La producción reúne dos perfiles complementarios: criterio musical y
+        experiencia de producción junto con ingeniería, grabación y construcción
+        sonora. Esta combinación permite abordar la canción desde la interpretación
+        y el arreglo hasta el resultado técnico final.
+      </p>
+    </div>
+
+    <div class="two-col" style="margin-top:56px;gap:70px;">
+      <article style="border-top:1px solid var(--line);padding-top:24px;">
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:500;margin-bottom:6px;">
+          Julián Andrés Ahunca
+        </h3>
+        <div style="font-size:11px;font-weight:700;color:#2B6667;margin-bottom:24px;">
+          Productor · Ingeniero de grabación, mezcla y masterización
+        </div>
+        <p>
+          Julián Andrés Ahunca es músico, productor e ingeniero de audio, con
+          17 años de experiencia musical como intérprete y más de 6 años de
+          experiencia en producción y grabación. Su experiencia como ejecutante
+          de piano, guitarra eléctrica, guitarra acústica y bajo le ha permitido
+          desarrollar una comprensión integral de la música, desde la interpretación
+          hasta la construcción sonora de una producción.
+        </p>
+      </article>
+
+      <article style="border-top:1px solid var(--line);padding-top:24px;">
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:500;margin-bottom:6px;">
+          William Ospina
+        </h3>
+        <div style="font-size:11px;font-weight:700;color:#2B6667;margin-bottom:24px;">
+          Productor musical
+        </div>
+        <p>
+          William Ospina es músico, baterista y productor musical, con formación
+          en percusión en el Conservatorio de Bellas Artes de Cali, 15 años de
+          experiencia como intérprete y 6 años de experiencia en producción
+          musical. Su recorrido como músico y productor le ha permitido trabajar
+          en diferentes géneros y lenguajes musicales, entre ellos: bachata,
+          reggae, salsa, regional mexicano, entre otros.
+        </p>
+        <p>
+          Como intérprete, sus principales instrumentos son la batería, las congas
+          y el timbal, además de interpretar piano y guitarra. Su experiencia
+          musical y de producción aporta una perspectiva amplia al desarrollo de
+          arreglos, instrumentación y construcción de la producción.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">04</div>
+        <h2>Dos caminos</h2>
+      </div>
+      <p>
+        La decisión depende del origen de la canción. En ambos casos el objetivo
+        es terminar con una producción completa; lo que cambia es el trabajo
+        creativo necesario para llegar allí.
+      </p>
+    </div>
+
+    <div class="offer-grid">
+
+      <article class="offer">
+        <div class="offer-label">Opción 01</div>
+        <h3>Producción de Cover</h3>
+        <p>
+          Una nueva versión de una canción existente. Trabajamos sobre la obra
+          para desarrollar una producción de salsa completa, definiendo su
+          instrumentación, tratamiento musical, interpretaciones y sonido final.
+        </p>
+
+        <h3 style="margin-top:26px;">Incluye</h3>
+        <ul>
+          <li>Maqueta</li>
+          <li>Preproducción</li>
+          <li>Producción musical</li>
+          <li>Grabación</li>
+          <li>Edición</li>
+          <li>Mezcla</li>
+          <li>Masterización</li>
+        </ul>
+
+        <div class="offer-price">
+          <div class="price-label">Inversión</div>
+          <div class="price">$3.500.000 COP</div>
+          <div class="price-usd">Referencia internacional · US$1.080</div>
+        </div>
+      </article>
+
+      <article class="offer featured">
+        <div class="offer-label">Opción 02</div>
+        <h3>Producción de Canción Inédita</h3>
+        <p>
+          Una producción construida específicamente para la canción. Además de
+          todo el proceso técnico, desarrollamos un arreglo musical original y
+          específico, de la mano del artista.
+        </p>
+
+        <h3 style="margin-top:26px;">Incluye</h3>
+        <ul>
+          <li>Todo el alcance de la Producción de Cover</li>
+          <li>Arreglo musical original a medida</li>
+          <li>Construcción del arreglo junto al artista</li>
+          <li>Definición de estructura e instrumentación</li>
+          <li>Desarrollo creativo de la identidad musical</li>
+        </ul>
+
+        <div class="offer-price">
+          <div class="price-label">Inversión</div>
+          <div class="price">$4.000.000 COP</div>
+          <div class="price-usd">Referencia internacional · US$1.235</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">05</div>
+        <h2>La diferencia está en la creación</h2>
+      </div>
+      <p>
+        Los $500.000 COP adicionales de la canción inédita no corresponden a
+        una producción técnicamente superior. Corresponden al trabajo creativo
+        adicional de construir un arreglo original y específico para la obra.
+      </p>
+    </div>
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Elemento</th>
+          <th>Cover</th>
+          <th>Inédita</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Maqueta</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Preproducción</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Producción musical</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Grabación</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Instrumentistas incluidos</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Edición</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Mezcla</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Masterización</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        <tr><td>Arreglo original a medida</td><td class="dash">—</td><td class="tick">✓</td></tr>
+        <tr><td>Trabajo creativo del arreglo junto al artista</td><td class="dash">—</td><td class="tick">✓</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>La diferencia no es cuánto se produce, sino qué hay que crear antes de producir.</strong>
+      <br>
+      En el cover partimos de una obra existente. En la canción inédita,
+      construimos una identidad musical específica alrededor de la nueva obra.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">06</div>
+        <h2>Instrumentistas incluidos</h2>
+      </div>
+      <p>
+        Ambas alternativas contemplan los honorarios de sesión de los
+        instrumentistas requeridos para desarrollar la producción de salsa.
+        Las horas de grabación contempladas para estos instrumentos también
+        están incluidas en la inversión.
+      </p>
+    </div>
+
+    <div class="two-col" style="margin-top:52px;">
+      <div>
+        <h3>Percusión</h3>
+        <ul class="plain-list">
+          <li>Timbal</li>
+          <li>Conga</li>
+          <li>Bongó</li>
+          <li>Campana</li>
+          <li>Elementos complementarios según el arreglo</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sección musical</h3>
+        <ul class="plain-list">
+          <li>Bajo</li>
+          <li>Piano</li>
+          <li>Trompeta</li>
+          <li>Trombón</li>
+          <li>Saxofón barítono o tenor</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los honorarios de sesión de los instrumentistas indicados y las horas de
+      grabación contempladas para la producción están incluidos dentro del valor final.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">07</div>
+        <h2>La voz final del artista</h2>
+      </div>
+      <div>
+        <p>
+          La producción contempla la construcción y grabación de los instrumentos
+          incluidos en el alcance.
+        </p>
+        <p>
+          La grabación de la voz final del artista podrá realizarse en el estudio
+          que Juan considere más conveniente.
+        </p>
+        <p>
+          Por esta razón, las horas de estudio destinadas exclusivamente a la
+          grabación de la voz final <strong>no están incluidas</strong> en la
+          inversión y serán asumidas directamente por el artista.
+        </p>
+        <p>
+          El material vocal será incorporado posteriormente al proceso de edición,
+          mezcla y masterización.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">08</div>
+        <h2>Revisiones</h2>
+      </div>
+      <p>
+        El proceso contempla espacios de revisión para asegurar que las
+        decisiones musicales y técnicas avancen en la dirección acordada.
+      </p>
+    </div>
+
+    <div class="two-col" style="margin-top:52px;">
+      <div>
+        <h3>Preproducción</h3>
+        <p>Hasta <strong>2 versiones de desarrollo</strong>.</p>
+
+        <h3 style="margin-top:30px;">Mezcla</h3>
+        <p>Hasta <strong>3 rondas de ajustes técnicos</strong>.</p>
+      </div>
+      <div>
+        <h3>Masterización</h3>
+        <p>Hasta <strong>2 rondas de ajustes técnicos</strong>.</p>
+
+        <h3 style="margin-top:30px;">Cambios adicionales</h3>
+        <p>
+          Los cambios posteriores a una aprobación que impliquen modificar
+          estructura, arreglo, tempo, instrumentación o dirección artística
+          podrán considerarse trabajo adicional y serán cotizados previamente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">09</div>
+        <h2>Entregables</h2>
+      </div>
+      <p>
+        Una vez completadas las etapas de producción y aprobada la versión final,
+        se entregará el material necesario para contar con una versión final y
+        con los recursos principales de la producción.
+      </p>
+    </div>
+
+    <div class="two-col" style="margin-top:52px;">
+      <div>
+        <ul class="checklist">
+          <li>Master final en WAV</li>
+          <li>Master final en MP3</li>
+          <li>Instrumental en WAV</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="checklist">
+          <li>Instrumental en MP3</li>
+          <li>Stems de la producción</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">10</div>
+        <h2>Qué no está incluido</h2>
+      </div>
+      <p>
+        Definir los límites del alcance desde el principio permite que el proceso
+        sea claro para ambas partes y evita costos o expectativas no contempladas.
+      </p>
+    </div>
+
+    <ul class="plain-list" style="margin-top:48px;max-width:760px;">
+      <li>Horas de estudio para la grabación de la voz final del artista.</li>
+      <li>Costos adicionales derivados del estudio externo elegido por el artista.</li>
+      <li>Instrumentistas diferentes a los contemplados expresamente en esta propuesta.</li>
+      <li>Cambios que excedan el alcance acordado.</li>
+      <li>Nuevas sesiones de grabación originadas por decisiones posteriores a la aprobación de una etapa.</li>
+    </ul>
+
+    <div class="callout">
+      Cualquier requerimiento adicional será informado y aprobado antes de ejecutarse.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">11</div>
+        <h2>Proceso de trabajo</h2>
+      </div>
+      <p>
+        La producción sigue un recorrido ordenado para tomar las decisiones
+        importantes antes de comprometerlas en las etapas técnicas.
+      </p>
+    </div>
+
+    <div class="two-col" style="margin-top:52px;">
+      <div>
+        <h3>01 · Maqueta</h3>
+        <p>Construimos una primera representación de la canción que permita tomar decisiones antes de la grabación.</p>
+
+        <h3>02 · Preproducción</h3>
+        <p>Definimos estructura, instrumentación y dirección musical.</p>
+
+        <h3>03 · Producción</h3>
+        <p>Desarrollamos el arreglo y construimos la interpretación de cada instrumento.</p>
+
+        <h3>04 · Grabación</h3>
+        <p>Registramos los instrumentos con los músicos contemplados dentro de la producción.</p>
+      </div>
+      <div>
+        <h3>05 · Edición</h3>
+        <p>Organizamos y preparamos el material para llevarlo a su forma definitiva.</p>
+
+        <h3>06 · Mezcla</h3>
+        <p>Construimos el balance, profundidad, dinámica y carácter sonoro de la producción.</p>
+
+        <h3>07 · Masterización</h3>
+        <p>Realizamos el proceso final para preparar la producción para su distribución.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">12</div>
+        <h2>Inversión y pagos</h2>
+      </div>
+      <p>
+        La inversión se establece en pesos colombianos. Los valores expresados
+        en dólares estadounidenses son únicamente una referencia comercial.
+      </p>
+    </div>
+
+    <div class="payment-grid">
+
+      <div class="payment-card">
+        <div class="offer-label">Producción de Cover</div>
+        <h3>$3.500.000 COP</h3>
+        <p class="note">Referencia internacional · US$1.080</p>
+
+        <div class="payment-row">
+          <div class="step">01</div>
+          <div class="label">Inicio</div>
+          <div class="amount">$1.000.000</div>
+        </div>
+        <div class="payment-row">
+          <div class="step">02</div>
+          <div class="label">Desarrollo y grabación</div>
+          <div class="amount">$1.000.000</div>
+        </div>
+        <div class="payment-row">
+          <div class="step">03</div>
+          <div class="label">Finalización y entrega</div>
+          <div class="amount">$1.500.000</div>
+        </div>
+      </div>
+
+      <div class="payment-card">
+        <div class="offer-label">Producción de Canción Inédita</div>
+        <h3>$4.000.000 COP</h3>
+        <p class="note">Referencia internacional · US$1.235</p>
+
+        <div class="payment-row">
+          <div class="step">01</div>
+          <div class="label">Inicio</div>
+          <div class="amount">$1.000.000</div>
+        </div>
+        <div class="payment-row">
+          <div class="step">02</div>
+          <div class="label">Producción y grabación</div>
+          <div class="amount">$1.500.000</div>
+        </div>
+        <div class="payment-row">
+          <div class="step">03</div>
+          <div class="label">Finalización y entrega</div>
+          <div class="amount">$1.500.000</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="note" style="margin-top:24px;">
+      La moneda contractual es COP. El valor en USD es una equivalencia de
+      referencia y puede variar según la tasa de cambio. Cada etapa se considera
+      iniciada una vez recibido el pago correspondiente.
+    </p>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">13</div>
+        <h2>Formas de pago</h2>
+      </div>
+      <p>
+        Para facilitar la contratación desde Colombia o desde el exterior,
+        ponemos a disposición diferentes modalidades de pago.
+      </p>
+    </div>
+
+    <div class="methods">
+      <div class="method">
+        <strong>Efectivo</strong>
+        <span>Pago presencial.</span>
+      </div>
+      <div class="method">
+        <strong>Transferencia bancaria</strong>
+        <span>Transferencia nacional o internacional.</span>
+      </div>
+      <div class="method">
+        <strong>PayPal</strong>
+        <span>Para pagos internacionales.</span>
+      </div>
+      <div class="method">
+        <strong>Tarjeta de crédito</strong>
+        <span>Mediante link de pago.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="section">
+    <div class="section-intro">
+      <div>
+        <div class="section-number">14</div>
+        <h2>Condiciones</h2>
+      </div>
+      <p>
+        Estas condiciones buscan establecer desde el principio un marco claro
+        para que la producción pueda avanzar con orden y sin incertidumbres.
+      </p>
+    </div>
+
+    <div class="callout" style="margin-top:48px;">
+      <strong>Fecha de emisión:</strong> 7 de octubre de 2026<br>
+      <strong>Vigencia:</strong> 2 meses, hasta el 7 de diciembre de 2026.
+    </div>
+
+    <ul class="plain-list" style="margin-top:32px;max-width:820px;">
+      <li>La producción inicia una vez confirmada la alternativa seleccionada y recibido el primer pago.</li>
+      <li>Las etapas se desarrollarán de acuerdo con el calendario establecido entre el artista y el equipo de producción.</li>
+      <li>La duración total dependerá de la velocidad de aprobación de cada etapa, disponibilidad de los músicos y calendario de grabación.</li>
+      <li>Las fechas definitivas serán establecidas al momento de iniciar el proyecto.</li>
+      <li>La inversión se expresa en COP. Los valores en USD son referencias comerciales.</li>
+      <li>Los costos adicionales no contemplados deberán ser aprobados antes de su ejecución.</li>
+    </ul>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="footer">
+    <div>
+      <div class="eyebrow">Cierre</div>
+      <h2>Una producción, de principio a fin.</h2>
+      <p class="lead">
+        El objetivo no es simplemente terminar una canción. Es construir una
+        producción en la que las decisiones musicales, las interpretaciones y
+        el sonido final trabajen en la misma dirección.
+      </p>
+      <p class="lead">
+        En cualquiera de las dos alternativas, el proyecto será acompañado
+        desde la primera maqueta hasta el master final.
+      </p>
+    </div>
+
+    <div class="footer-meta">
+      <strong>Juan Perdomo</strong><br>
+      Propuesta de producción musical<br>
+      Salsa · 2026
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
